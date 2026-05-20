@@ -1,7 +1,8 @@
-FROM nginx:alpine
+FROM node:20-alpine
 
-COPY index.html /usr/share/nginx/html/index.html
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+WORKDIR /app
+COPY server.js .
+COPY index.html .
 
-CMD ["/start.sh"]
+EXPOSE 3000
+CMD ["node", "server.js"]
